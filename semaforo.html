@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title></title>
+</head>
+
+<body>
+    <style>
+    .semaforo{ 
+      border : 5px solid yellow; 
+      height:100px;  
+      width:50px;
+    }
+      .rojo,.amarillo, .verde {
+        margin-left : 12px;
+        margin-top: 3px;
+        width:25px;
+        height:25px; 
+        border:1px solid ;
+        border-radius: 50%;
+      }
+      .rojo { background: red; }
+      .amarillo { background: yellow; }
+      .verde { background: green; }
+      .desactivado {
+      	background : silver; 
+      }
+  </style>
+  
+	<div class="semaforo">
+      <div class="colores rojo desactivado"></div>
+      <div class="colores amarillo desactivado"></div>
+      <div class="colores verde desactivado"></div>
+  	</div>
+  
+  <script> 
+   //estoy seleccionando todos los elementos que tienen la clase colores que son 3 	es decir me traera un
+  	let bombillos = document.querySelectorAll('.colores'); 
+    
+    //contador para saber que color estoy mostrando
+    let contador = 0; 
+    
+     //setintevar hace que una funcion se ejecute cada tantos segundos
+    //1000 = 1segundos
+    setInterval(function(){
+      //desactivo todos los bombillos
+      bombillos.forEach(function(bombilla){
+      	 bombilla.classList.add('desactivado');
+      })
+      //cambio la clase en los bombillos que este activo
+      bombillos[contador].classList.remove('desactivado'); 
+      
+      //sumo+1 al contador para que siga aumentado y pase por los otros colores
+      contador++; 
+      //si me paso de 3 reinicio el contador
+      if(contador == 3){ contador = 0; }
+    },1000)
+  </script>	
+</body>
+</html>
